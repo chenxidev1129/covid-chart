@@ -1,10 +1,13 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import { Layout } from 'antd';
+import mainStyle from '../styles/main.module.css';
 
-export default function Layout({
+export default function BaseLayout({
   children
 }: {
   children: React.ReactNode
 }) {
+  const { Header, Content } = Layout;
   return (
     <>
       <Head>
@@ -14,7 +17,12 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {children}
+        <Layout>
+          <Header className={mainStyle.header}>
+            <h1>App title</h1>
+          </Header>
+          <Content>{children}</Content>
+        </Layout>
       </main>
     </>
   )
